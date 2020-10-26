@@ -1,0 +1,178 @@
+<h1 class="mt-3">Pipes <small>Angular</small></h1>
+<hr>
+<div class="row">
+    <div class="col">
+        <table class="table">
+            <thead class="thead-dark">
+                <th>Variables</th>
+                <th>Pipes</th>
+                <th>Salida</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ nombre }} </td>
+                    <td> uppercase </td>
+                    <td> {{ nombre | uppercase }} </td>
+                </tr>
+                <tr>
+                    <td>{{ nombre }} </td>
+                    <td> lowercase </td>
+                    <td> {{ nombre | lowercase }} </td>
+                </tr>
+                <tr>
+                    <td>{{ nombre2 }} </td>
+                    <td> capitalizado </td>
+                    <!-- Este es un pipe personalizado usando ng g p pipes/capitalizado -->
+                    <td> {{ nombre2 | capitalizado }} </td>
+                </tr>
+                <tr>
+                    <td>{{ nombre }} </td>
+                    <td> slice: 3 </td>
+                    <!-- Primeras 3 letras las corta -->
+                    <td> {{ nombre | slice:3 }} </td>
+                </tr>
+                <tr>
+                    <td>{{ nombre }} </td>
+                    <td> slice:0:3 </td>
+                    <!-- Mostrar desde la posicion 0 hasta la tres -->
+                    <td> {{ nombre | slice:0:3 }} </td>
+                </tr>
+                <tr>
+                    <td>{{ arreglo }} </td>
+                    <td> slice:1:5 </td>
+                    <!-- Mostrar desde la posicion 1 hasta la 5 -->
+                    <td> {{ arreglo | slice:1:5 }} </td>
+                </tr>
+                <tr>
+                    <td>{{ PI }} </td>
+                    <td> number:'1.0-0' </td>
+                    <!-- Mostrar el entero del numero (SIN DECIMALES) -->
+                    <td> {{ PI | number:'1.0-0' }} </td>
+                </tr>
+                <tr>
+                    <td>{{ PI }} </td>
+                    <td> number:'3.0-0' </td>
+                    <!-- Se muestran 3 numeros -->
+                    <td> {{ PI | number:'3.0-0' }} </td>
+                </tr>
+                <tr>
+                    <td>{{ PI }} </td>
+                    <td> number:'.0-2' </td>
+                    <!-- Se muestran lo dos primeros decimales. -->
+                    <td> {{ PI | number:'.0-2' }} </td>
+                </tr>
+                <tr>
+                    <td>{{ porcentaje }} </td>
+                    <td> percent </td>
+                    <!-- Convierte a porcentaje. Ej: 0.25 lo convierte a 25%. REDONDEA -->
+                    <td> {{ porcentaje | percent }} </td>
+                </tr>
+                <tr>
+                    <td>{{ porcentaje }} </td>
+                    <td> percent:'2.2-2' </td>
+                    <!-- Se muestran lo dos primeros decimales del porcentaje SIN REDONDEAR los decimales. -->
+                    <td> {{ porcentaje | percent:'2.2-2' }} </td>
+                </tr>
+                <tr>
+                    <td>{{ salario }} </td>
+                    <td> currency </td>
+                    <!--Coloca el $ por defecto. Ejemplo: 1234.5 lo transforma a $1,234.50 -->
+                    <td> {{ salario | currency }} </td>
+                </tr>
+                <tr>
+                    <td>{{ salario }} </td>
+                    <td> currency:'EUR' </td>
+                    <!-- -->
+                    <td> {{ salario | currency:'EUR' }} </td>
+                </tr>
+                <tr>
+                    <td>{{ salario }} </td>
+                    <td> currency:'CAD':'symbol-narrow' </td>
+                    <!-- -->
+                    <td> {{ salario | currency:'CAD':'symbol-narrow' }} </td>
+                </tr>
+                <tr>
+                    <td>{{ salario }} </td>
+                    <td> currency:'CAD':'symbol' </td>
+                    <!-- -->
+                    <td> {{ salario | currency:'CAD':'symbol' }} </td>
+                </tr>
+                <tr>
+                    <td>{{ salario }} </td>
+                    <td> currency:'CAD':'symbol':'0-0' </td>
+                    <!-- Sin decimales -->
+                    <td> {{ salario | currency:'CAD':'symbol':'.0-0' }} </td>
+                </tr>
+                <tr>
+                    <td>{{ valorPromesa }} </td>
+                    <td> async </td>
+                    <!--  -->
+                    <td> {{ valorPromesa | async }} </td>
+                </tr>
+                <tr>
+                    <td>{{ fecha }} </td>
+                    <td> date </td>
+                    <!--  -->
+                    <td> {{ fecha | date }} </td>
+                </tr>
+                <tr>
+                    <td>{{ fecha }} </td>
+                    <td> date:'medium' </td>
+                    <!--  -->
+                    <td> {{ fecha | date:'medium' }} </td>
+                </tr>
+                <tr>
+                    <td>{{ fecha }} </td>
+                    <td> date:'short' </td>
+                    <!-- 'short': equivalent to 'M/d/yy, h:mm a' (6/15/15, 9:03 AM). -->
+                    <td> {{ fecha | date:'short' }} </td>
+                </tr>
+                <tr>
+                    <td>{{ fecha }} </td>
+                    <td> date:'MMMM - dd' </td>
+                    <!--  -->
+                    <td> {{ fecha | date:'MMMM - dd' }} </td>
+                </tr>
+                <tr>
+                    <td>{{ fecha }} </td>
+                    <td> date:'MMMM - dd':'':'{{idioma}}'
+                        <br>
+                        <button (click)="cambiarIdioma('es')" class="mr-1 btn btn-primary">Español</button>
+                        <button (click)="cambiarIdioma('en')" class="mr-1 btn btn-secondary">Inglés</button>
+                        <button (click)="cambiarIdioma('fr')" class="mr-1 btn btn-success">Francés</button>
+                    </td>
+                    <!--  -->
+                    <td> {{ fecha | date:'MMMM - dd':'':idioma }} </td>
+                </tr>
+                <tr>
+                    <td>{{ nombre }} </td>
+                    <td> contrasena {{ activar }}
+                        <br>
+                        <button (click)="activar = !activar" class="btn btn-outline-primary">
+                        Activar/Desactivar
+                    </button>
+                    </td>
+                    <!--  -->
+                    <td> {{ nombre | contrasena:activar }} </td>
+                </tr>
+            </tbody>
+        </table>
+        <h4>Slice</h4>
+        <ul>
+            <li *ngFor="let item of arreglo | slice:5:20"> {{ item }} </li>
+        </ul>
+        <h3>JSON</h3>
+        <hr>
+        <div class="row mb-5">
+            <div class="col">
+                <pre>{{ heroe | json}}</pre>
+            </div>
+        </div>
+    </div>
+</div>
+<h3 class="mt-4">Domseguro</h3>
+<div class="row mb-5">
+    <div class="col">
+        <iframe width="560" height="315" [src]="videoUrl | domseguro" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>
